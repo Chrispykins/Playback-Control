@@ -2,7 +2,6 @@ var prc_video;
 var prc_audio;
 
 function monitor() {
-	//console.log("monitoring");
 
 	prc_video = document.getElementsByTagName("video");
 	prc_audio = document.getElementsByTagName("audio");
@@ -23,8 +22,6 @@ function monitor() {
 		return;
 	}
 	else chrome.runtime.sendMessage({playbackRate: playbackRate});
-
-	setTimeout(monitor, 5000);
 }
 
 monitor();
@@ -32,7 +29,6 @@ monitor();
 chrome.extension.onRequest.addListener(function(request, sender) {
 
 	var playbackRate = parseFloat(request.playbackRate);
-	//console.log(request);
 
 	if (playbackRate) {
 
